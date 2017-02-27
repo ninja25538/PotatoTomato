@@ -33,3 +33,4 @@
                alert("WebSocket NOT supported by your Browser!");
             }
          }
+WebSocketTest();
