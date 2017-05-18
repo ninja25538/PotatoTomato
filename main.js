@@ -1,6 +1,8 @@
 //Hey guys it's a me, the same dude who made The Necromancer
 //So I'm also making a seperate game that has nothing to do with THe Necromancer as a school project
 //So, uh, yeah, hope you enjoy this game and every other game I ever make ever
+
+
 var c = document.getElementById("canvas");
 var ctx = c.getContext("2d");
 ctx.canvas.width = window.innerWidth - 25;
@@ -42,9 +44,7 @@ var crazo4Y = 600;
 var crazo5X = 640;
 var crazo5Y = 600;
 
-var finalBossX = 600;
-var finalBossY = 450;
-
+var missleHealth = 500;
 
 var player1Health = 50;
 var player2Health = 50;
@@ -82,6 +82,20 @@ var p2Hiding = false;
 
 var enemies = "";
 var items = "";
+
+
+/*
+alert("Hey so a few quick notes before you start the game");
+alert("First of all W A S D to move your first character and the arrow keys to move the second, the rest you'll be taught");
+alert("Ok now a few quick words");
+alert("First of all I'm really sorry that this game is so buggy, I didn't have much time to iron out some stuff");
+alert("Secondly I wasn't able to put all that much content in the game anyway");
+alert("Both for time reasons");
+alert("And thirdly I hope you can still see what I was going for, what the game was supposed to be");
+alert("And finally I made this for a school project so I might not update very much, HOWEVER...");
+alert("If you really want me to expand on the game, I will. Just shoot me an email");
+alert("In fact, I think I can just make an email tab if you're using Chrome, give me a sec");
+*/
 
 function drawPlayer1() {
   
@@ -269,17 +283,90 @@ function giant(giantX, giantY){
   }, 1000);
 }
 
-function finalBoss(){
-  ctx.fillStyle = "#000f23";
-  ctx.fillRect(finalBossX, finalBossY, 50, 50);
-  setInterval(function(){
-    if(finalBossY > 0){
-       ctx.fillStyle = "#000f23";
-       ctx.fillRect(finalBossX, finalBossX, 50, 50);
-      finalBossY++;
-    } 
+function bullet(bulletX, bulletY){
+  ctx.fillStyle = "black";
+  ctx.fillRect(bulletX, bulletY, 5, 5);
+  
+  var moveDaBullet = setInterval(function(){
+    if(bulletX >=  -5){
+    ctx.fillStyle = "#1e90ff";
+    ctx.fillRect(bulletX, bulletY, 5, 5);
+    bulletX--;
+  ctx.fillStyle = "black";
+  ctx.fillRect(bulletX, bulletY, 5, 5);
+  
+  if(bulletX >= player1X && bulletX <= player1X + 15 && bulletY >= player1Y && bulletY <= player1Y + 15){
+      player1Health --;
+    if(player1Health <= 0){
+      alert("You Died!");
+      window.location.href = "http://127.0.0.1:31999/MareaderCreativeProject/index.html";
+    }
+  }
+    } else {
+      clearInterval(moveDaBullet);
+    }
+    
   }, 1);
+
 }
+
+function Missle(missleX, missleY){
+  function drawTheMissle(){
+  var missle = new Image();
+  missle.onload = function() {
+    ctx.drawImage(missle, missleX, missleY);
+  };
+  missle.src = "Rocket.png";
+  } 
+  function drawTinyMissle(){
+  var tinyMissle = new Image();
+  tinyMissle.onload = function() {
+    ctx.drawImage(tinyMissle, missleX, missleY, 50, 100);
+  };
+  tinyMissle = "Rocket.png";
+  }
+  drawTheMissle();
+
+  var move = setInterval(function(){
+    if(missleY > player1Y - 250){
+      ctx.fillStyle = "#1e90ff";
+      ctx.fillRect(missleX + 525, missleY + 225, 475, 325);
+      missleY--;
+      drawTheMissle();
+    } else if(missleY < player1Y - 250){
+      ctx.fillStyle = "#1e90ff";
+      ctx.fillRect(missleX + 525, missleY + 225, 475, 325);
+      missleY++;
+      drawTheMissle();
+    }
+    
+    if(missleHealth <= missleHealth/2){
+
+    }
+    
+    if(player1Health <= 0 || player2Health <= 0){
+      ctx.clearInterval(move);
+      alert('You got to close to the rocket and burned up =(');
+      window.location.href = "http://127.0.0.1:31999/MareaderCreativeProject/index.html";
+    } 
+    if(player1X === missleX + 600 || player2X === missleX + 600){
+      clearInterval(move);
+      alert('You got too close to the rocket and burned up =(');
+      window.location.href = "http://127.0.0.1:31999/MareaderCreativeProject/index.html";
+    }
+    
+    
+  }, 10);
+  
+  var shoot = setInterval(function(){
+    bullet(missleX + 600, missleY + 250);
+  }, 1200);
+  
+  
+}
+
+Missle(0, 0);
+
 
 
 //This is probably the worst attack animation ever, but I'm just going to leave it like this for now
@@ -339,7 +426,7 @@ sword2Y = player2Y + 5;
 drawPlayer1();
 drawPlayer2();
 
-finalBoss();
+Missle();
 
 var speech = document.getElementById("speech");
 
@@ -486,7 +573,7 @@ crazo(crazo5X, crazo5Y);
      alert("Here is the final boss, use all you know to take him down!!!");
           ctx.fillStyle = "#1e90ff";
       ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-     finalBoss();
+     Missle(0, 0);
    }
   }
 
