@@ -261,7 +261,7 @@ var move = setInterval(function(){
 }
 
 function giant(giantX, giantY){
-  setInterval(function(){
+  var giantInterval = setInterval(function(){
   if(giantHealth > 0){
     ctx.fillStyle = "#ffd09e";
     ctx.fillRect(giantX + 15, giantY - 320, 400, 400);
@@ -291,6 +291,7 @@ function giant(giantX, giantY){
       laser(giantX + 25, giantY - 259);
     }, 5000);
   } else if(giantHealth <= 0){
+    clearInterval(giantInterval);
     alert("The giant is dead, continue to your final battle!");
   }
   }, 1000);
