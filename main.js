@@ -158,21 +158,36 @@ function crazo(crazoX, crazoY){
   ctx.fillStyle = hue;
     crazoX+= 20;
     ctx.fillRect(crazoX, crazoY, 15, 15);
+        if(crazoX === player1X && crazoY === player1Y){
+      alert("You died!");
+      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
+    } else if(crazoX === player2X && crazoY === player2Y){
+      alert("You died!");
+      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
+    }
   } else if(random === 2 && crazoY <= ctx.canvas.height){
     hue = 'rgb(' + (Math.floor(Math.random() * 255)) + ',' + (Math.floor(Math.random() * 255)) + ',' + (Math.floor(Math.random() * 255)) + ')';
   ctx.fillStyle = hue;
     crazoY+= 20;
     ctx.fillRect(crazoX, crazoY, 15, 15);
-        if(crazoX === player1X && crazoY === player1Y || crazoX === player2X && crazoY === player2Y){
+    if(crazoX === player1X && crazoY === player1Y){
       alert("You died!");
+      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
+    } else if(crazoX === player2X && crazoY === player2Y){
+      alert("You died!");
+      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
     }
   } else if(random === 3 && crazoX >= 0){
     hue = 'rgb(' + (Math.floor(Math.random() * 255)) + ',' + (Math.floor(Math.random() * 255)) + ',' + (Math.floor(Math.random() * 255)) + ')';
       ctx.fillStyle = hue;
     crazoX-= 20;
     ctx.fillRect(crazoX, crazoY, 15, 15);
-        if(crazoX === player1X && crazoY === player1Y || crazoX === player2X && crazoY === player2Y){
+    if(crazoX === player1X && crazoY === player1Y){
       alert("You died!");
+      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
+    } else if(crazoX === player2X && crazoY === player2Y){
+      alert("You died!");
+      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
     }
   } else if(random === 4 && crazoY >= 0){
     hue = 'rgb(' + (Math.floor(Math.random() * 255)) + ',' + (Math.floor(Math.random() * 255)) + ',' + (Math.floor(Math.random() * 255)) + ')';
@@ -809,4 +824,3 @@ crazo(crazo5X, crazo5Y);
   }, 5000);
  }
 });
-
