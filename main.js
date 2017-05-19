@@ -400,6 +400,7 @@ var move = setInterval(function(){
     alert("I'm being serious, I have no idea what to do");
     alert("You know what, what do you want your prize to be. I'll shoot you an email if you also add that too");
     alert("I'll load up your email thing but in case you haven't noticed, I love getting emails");
+      alert("Oh and I got the facts from You Wouldn't Want To Be A Ninja Warrior, by John Malam");
     }, 5000);
     window.location.href="href=mailto:gamedevbuisness@gmail.com";
     
