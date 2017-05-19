@@ -11,7 +11,7 @@ ctx.canvas.height = window.innerHeight - 100;
 ctx.fillStyle = "#1e90ff";
 ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-var scene = 3;
+var scene = 0;
 
 //All the stats about the  players
 var player1X = 200;
@@ -44,7 +44,7 @@ var crazo4Y = 600;
 var crazo5X = 640;
 var crazo5Y = 600;
 
-var missleHealth = 500;
+var missleHealth = 300;
 
 var player1Health = 50;
 var player2Health = 50;
@@ -84,7 +84,7 @@ var enemies = "";
 var items = "";
 
 
-/*
+
 alert("Hey so a few quick notes before you start the game");
 alert("First of all W A S D to move your first character and the arrow keys to move the second, the rest you'll be taught");
 alert("Ok now a few quick words");
@@ -93,9 +93,7 @@ alert("Secondly I wasn't able to put all that much content in the game anyway");
 alert("Both for time reasons");
 alert("And thirdly I hope you can still see what I was going for, what the game was supposed to be");
 alert("And finally I made this for a school project so I might not update very much, HOWEVER...");
-alert("If you really want me to expand on the game, I will. Just shoot me an email");
-alert("In fact, I think I can just make an email tab if you're using Chrome, give me a sec");
-*/
+alert("If you really want me to expand on the game, I will. Just shoot me an email at gamedevbuisness@gmail.com");
 
 function drawPlayer1() {
   
@@ -183,10 +181,10 @@ function crazo(crazoX, crazoY){
     ctx.fillRect(crazoX, crazoY, 15, 15);
     if(crazoX === player1X && crazoY === player1Y){
       alert("You died!");
-      window.location.href = "http://127.0.0.1:31999/MareaderCreativeProject/index.html";
+      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
     } else if(crazoX === player2X && crazoY === player2Y){
       alert("You died!");
-      window.location.href = "http://127.0.0.1:31999/MareaderCreativeProject/index.html";
+      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
     }
   }
     } 
@@ -234,11 +232,11 @@ var move = setInterval(function(){
   if(player1Y >= laserY && player1Y <= laserY + 40 && player1X === laserX){
     player1Health = 0;
     alert("You died!");
-    window.location.href = 'http://127.0.0.1:31999/MareaderCreativeProject/index.html';
+    window.location.href = 'https://ninja25538.github.io/PotatoTomato/';
   } if(player2Y >= laserY && player2Y <= laserY + 40 && player2X === laserX){
     player2Health = 0;
     alert("You died!");
-    window.location.href = 'http://127.0.0.1:31999/MareaderCreativeProject/index.html';
+    window.location.href = 'https://ninja25538.github.io/PotatoTomato/';
   }
   
   if(laserX <= 0){
@@ -291,26 +289,39 @@ function bullet(bulletX, bulletY){
     if(bulletX >=  -5){
     ctx.fillStyle = "#1e90ff";
     ctx.fillRect(bulletX, bulletY, 5, 5);
-    bulletX--;
+    bulletX -= 15;
   ctx.fillStyle = "black";
   ctx.fillRect(bulletX, bulletY, 5, 5);
   
-  if(bulletX >= player1X && bulletX <= player1X + 15 && bulletY >= player1Y && bulletY <= player1Y + 15){
-      player1Health --;
+  if(bulletX >= player1X && bulletX <= player1X + 10 && bulletY >= player1Y && bulletY <= player1Y + 15){
+    clearInterval(moveDaBullet);
+      player1Health -= 2.1;
     if(player1Health <= 0){
       alert("You Died!");
-      window.location.href = "http://127.0.0.1:31999/MareaderCreativeProject/index.html";
+      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
+    }
+  } else if(bulletX >= player2X && bulletX <= player2X + 10 && bulletY >= player2Y && bulletY <= player2Y + 15){
+    clearInterval(moveDaBullet);
+      player2Health -= 2.1;
+    if(player2Health <= 0){
+      alert("You Died!");
+      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
     }
   }
     } else {
       clearInterval(moveDaBullet);
     }
     
-  }, 1);
+  }, 15);
 
 }
 
 function Missle(missleX, missleY){
+  //alert("Since I don't have any more time to add to this game (really sorry ya guys), if you can survive 5 minutes against this monstrosity, you win!!!");
+  
+  setInterval(function(){
+    missleHealth--;
+  }, 1000);
   function drawTheMissle(){
   var missle = new Image();
   missle.onload = function() {
@@ -318,55 +329,96 @@ function Missle(missleX, missleY){
   };
   missle.src = "Rocket.png";
   } 
-  function drawTinyMissle(){
+  
+  function drawTinyMissle(tinyMissleX, tinyMissleY){
   var tinyMissle = new Image();
   tinyMissle.onload = function() {
-    ctx.drawImage(tinyMissle, missleX, missleY, 50, 100);
+    setInterval(function(){
+      tinyMissleX -= 20;
+    ctx.drawImage(tinyMissle, tinyMissleX, tinyMissleY);
+    }, 300);
   };
-  tinyMissle = "Rocket.png";
-  }
+  tinyMissle.src = "MiniROCKET.png";
+  } 
+
+  
   drawTheMissle();
 
-  var move = setInterval(function(){
-    if(missleY > player1Y - 250){
+
+
+
+var move = setInterval(function(){
+  if(missleHealth >= 0){
+    if(missleY > player1Y - 350){
       ctx.fillStyle = "#1e90ff";
       ctx.fillRect(missleX + 525, missleY + 225, 475, 325);
       missleY--;
       drawTheMissle();
-    } else if(missleY < player1Y - 250){
+    } else if(missleY < player1Y - 450){
       ctx.fillStyle = "#1e90ff";
       ctx.fillRect(missleX + 525, missleY + 225, 475, 325);
       missleY++;
       drawTheMissle();
     }
     
-    if(missleHealth <= missleHealth/2){
-
+    if(missleHealth <= 250){
+      setTimeout(function(){
+      drawTinyMissle(missleX + 580, missleY + 325);
+      }, 1000000);
     }
     
     if(player1Health <= 0 || player2Health <= 0){
       ctx.clearInterval(move);
       alert('You got to close to the rocket and burned up =(');
-      window.location.href = "http://127.0.0.1:31999/MareaderCreativeProject/index.html";
+      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
     } 
     if(player1X === missleX + 600 || player2X === missleX + 600){
       clearInterval(move);
       alert('You got too close to the rocket and burned up =(');
-      window.location.href = "http://127.0.0.1:31999/MareaderCreativeProject/index.html";
+      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
     }
     
+  } else {
+    setTimeout(function(){
+    alert("Congrats! You finished the game!!!");
+    alert("Now I mean I should probably give you a prize or something for winning");
+    alert("I'm being serious, I have no idea what to do");
+    alert("You know what, what do you want your prize to be. I'll shoot you an email if you also add that too");
+    alert("I'll load up your email thing but in case you haven't noticed, I love getting emails");
+    }, 5000);
+    window.location.href="href=mailto:gamedevbuisness@gmail.com";
     
-  }, 10);
+  }
+  }, 20);
   
   var shoot = setInterval(function(){
-    bullet(missleX + 600, missleY + 250);
-  }, 1200);
+    var randomYValue1 = Math.floor((Math.random() * 350) + 175);
+    var randomYValue2 = Math.floor((Math.random() * 350) + 175);
+    var randomYValue3 = Math.floor((Math.random() * 350) + 175);
+    var randomYValue4 = Math.floor((Math.random() * 350) + 175);
+    var randomYValue5 = Math.floor((Math.random() * 350) + 175);
+    var randomYValue6 = Math.floor((Math.random() * 350) + 175);
+    var randomYValue7 = Math.floor((Math.random() * 350) + 175);
+    var randomYValue8 = Math.floor((Math.random() * 350) + 175);
+    var randomYValue9 = Math.floor((Math.random() * 350) + 175);
+    var randomYValue10 = Math.floor((Math.random() * 350) + 175);
+    
+    bullet(missleX + 520, missleY + randomYValue1);
+    bullet(missleX + 520, missleY + randomYValue2);
+    bullet(missleX + 520, missleY + randomYValue3);
+    bullet(missleX + 520, missleY + randomYValue4);
+    bullet(missleX + 520, missleY + randomYValue5);
+    bullet(missleX + 520, missleY + randomYValue6);
+    bullet(missleX + 520, missleY + randomYValue7);
+    bullet(missleX + 520, missleY + randomYValue8);
+    bullet(missleX + 520, missleY + randomYValue9);
+    bullet(missleX + 520, missleY + randomYValue10);
+    
+    
+}, 1200);
   
   
 }
-
-Missle(0, 0);
-
 
 
 //This is probably the worst attack animation ever, but I'm just going to leave it like this for now
@@ -426,13 +478,7 @@ sword2Y = player2Y + 5;
 drawPlayer1();
 drawPlayer2();
 
-Missle();
-
 var speech = document.getElementById("speech");
-
-//var tc1 = new Audio('Voice/TutorialClip1.mp3');
-//tc1.play();
-
 
 //The bulk of the code is here for some reason
 
@@ -571,9 +617,7 @@ crazo(crazo5X, crazo5Y);
    } else if(scene === 5){
      alert("Fun fact: Ninjas were actually samurai that were disgraced");
      alert("Here is the final boss, use all you know to take him down!!!");
-          ctx.fillStyle = "#1e90ff";
-      ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-     Missle(0, 0);
+     Missle(200, 0);
    }
   }
 
