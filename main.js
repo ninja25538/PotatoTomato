@@ -11,7 +11,7 @@ ctx.canvas.height = window.innerHeight - 100;
 ctx.fillStyle = "#1e90ff";
 ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-var scene = 4;
+var scene = 2;
 
 //All the stats about the  players
 var player1X = 200;
