@@ -619,10 +619,6 @@ ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
      alert("Fun fact: Did you know ninjas were based in Japan?");
      alert("AHH, CRAZOS!!! They're blind so invisibilty doesn't work. They run around until they touch you, then they kill you!");
      crazo(crazo1X, crazo1Y);
-crazo(crazo2X, crazo2Y);
-crazo(crazo3X, crazo3Y);
-crazo(crazo4X, crazo4Y);
-crazo(crazo5X, crazo5Y);
      speech.innerHTML = "";
    } else if(scene === 4){
      crazoHealth = 0;
@@ -710,10 +706,6 @@ ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
    } else if(scene === 3){
           alert("AHH, CRAZOS!!! They're blind so invisibilty doesn't work. They run around until they touch you, then they kill you!");
      crazo(crazo1X, crazo1Y);
-crazo(crazo2X, crazo2Y);
-crazo(crazo3X, crazo3Y);
-crazo(crazo4X, crazo4Y);
-crazo(crazo5X, crazo5Y);
    }
   }
 
