@@ -12,7 +12,7 @@ ctx.fillStyle = "#1e90ff";
 ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
 var scene = 2;
-
+Missle(400, 400);
 //All the stats about the  players
 var player1X = 200;
 var player1Y = 200;
