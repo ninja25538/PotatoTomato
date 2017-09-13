@@ -84,16 +84,12 @@ var enemies = "";
 var items = "";
 
 
+alert("Hoi and welcome to a (slightly modded) version of a game I made when I was 10!");
+alert("Now this game is actually pretty hard so just be warned");
+alert("Arrow keys and WASD to move, shift to teleport, and 1 and / to use your swords");
+alert("Also this is a 2 player game so invite your friend to play with you");
 
-alert("Hey so a few quick notes before you start the game");
-alert("First of all W A S D to move your first character and the arrow keys to move the second, the rest you'll be taught");
-alert("Ok now a few quick words");
-alert("First of all I'm really sorry that this game is so buggy, I didn't have much time to iron out some stuff");
-alert("Secondly I wasn't able to put all that much content in the game anyway");
-alert("Both for time reasons");
-alert("And thirdly I hope you can still see what I was going for, what the game was supposed to be");
-alert("And finally I made this for a school project so I might not update very much, HOWEVER...");
-alert("If you really want me to expand on the game, I will. Just shoot me an email at gamedevbuisness@gmail.com");
+
 
 function drawPlayer1() {
   
@@ -160,11 +156,11 @@ function crazo(crazoX, crazoY){
     ctx.fillRect(crazoX, crazoY, 15, 15);
         if(crazoX === player1X && crazoY === player1Y){
       alert("You died!");
-      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
-    } else if(crazoX === player2X && crazoY === player2Y){
+location.reload();
+        } else if(crazoX === player2X && crazoY === player2Y){
       alert("You died!");
-      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
-    }
+location.reload();
+            }
   } else if(random === 2 && crazoY <= ctx.canvas.height){
     hue = 'rgb(' + (Math.floor(Math.random() * 255)) + ',' + (Math.floor(Math.random() * 255)) + ',' + (Math.floor(Math.random() * 255)) + ')';
   ctx.fillStyle = hue;
@@ -172,11 +168,11 @@ function crazo(crazoX, crazoY){
     ctx.fillRect(crazoX, crazoY, 15, 15);
     if(crazoX === player1X && crazoY === player1Y){
       alert("You died!");
-      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
-    } else if(crazoX === player2X && crazoY === player2Y){
+location.reload();
+            } else if(crazoX === player2X && crazoY === player2Y){
       alert("You died!");
-      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
-    }
+location.reload();
+            }
   } else if(random === 3 && crazoX >= 0){
     hue = 'rgb(' + (Math.floor(Math.random() * 255)) + ',' + (Math.floor(Math.random() * 255)) + ',' + (Math.floor(Math.random() * 255)) + ')';
       ctx.fillStyle = hue;
@@ -184,11 +180,11 @@ function crazo(crazoX, crazoY){
     ctx.fillRect(crazoX, crazoY, 15, 15);
     if(crazoX === player1X && crazoY === player1Y){
       alert("You died!");
-      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
-    } else if(crazoX === player2X && crazoY === player2Y){
+location.reload();
+            } else if(crazoX === player2X && crazoY === player2Y){
       alert("You died!");
-      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
-    }
+location.reload();
+            }
   } else if(random === 4 && crazoY >= 0){
     hue = 'rgb(' + (Math.floor(Math.random() * 255)) + ',' + (Math.floor(Math.random() * 255)) + ',' + (Math.floor(Math.random() * 255)) + ')';
   ctx.fillStyle = hue;
@@ -196,11 +192,11 @@ function crazo(crazoX, crazoY){
     ctx.fillRect(crazoX, crazoY, 15, 15);
     if(crazoX === player1X && crazoY === player1Y){
       alert("You died!");
-      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
-    } else if(crazoX === player2X && crazoY === player2Y){
+location.reload();
+            } else if(crazoX === player2X && crazoY === player2Y){
       alert("You died!");
-      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
-    }
+location.reload();
+            }
   }
     } 
 }, 10);
@@ -247,12 +243,12 @@ var move = setInterval(function(){
   if(player1Y >= laserY && player1Y <= laserY + 40 && player1X === laserX){
     player1Health = 0;
     alert("You died!");
-    window.location.href = 'https://ninja25538.github.io/PotatoTomato/';
-  } if(player2Y >= laserY && player2Y <= laserY + 40 && player2X === laserX){
+location.reload();
+          } if(player2Y >= laserY && player2Y <= laserY + 40 && player2X === laserX){
     player2Health = 0;
     alert("You died!");
-    window.location.href = 'https://ninja25538.github.io/PotatoTomato/';
-  }
+location.reload();
+          }
   
   if(laserX <= 0){
     clearInterval(move);
@@ -314,15 +310,15 @@ function bullet(bulletX, bulletY){
       player1Health -= 2.1;
     if(player1Health <= 0){
       alert("You Died!");
-      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
-    }
+location.reload();
+            }
   } else if(bulletX >= player2X && bulletX <= player2X + 10 && bulletY >= player2Y && bulletY <= player2Y + 15){
     clearInterval(moveDaBullet);
       player2Health -= 2.1;
     if(player2Health <= 0){
       alert("You Died!");
-      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
-    }
+location.reload();
+            }
   }
     } else {
       clearInterval(moveDaBullet);
@@ -333,7 +329,7 @@ function bullet(bulletX, bulletY){
 }
 
 function Missle(missleX, missleY){
-  //alert("Since I don't have any more time to add to this game (really sorry ya guys), if you can survive 5 minutes against this monstrosity, you win!!!");
+  alert("Survive 5 minutes against this dude to get your flag!");
   
   setInterval(function(){
     missleHealth--;
@@ -386,24 +382,20 @@ var move = setInterval(function(){
     if(player1Health <= 0 || player2Health <= 0){
       ctx.clearInterval(move);
       alert('You got to close to the rocket and burned up =(');
-      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
-    } 
+location.reload();
+            } 
     if(player1X === missleX + 600 || player2X === missleX + 600){
       clearInterval(move);
       alert('You got too close to the rocket and burned up =(');
-      window.location.href = "https://ninja25538.github.io/PotatoTomato/";
-    }
+location.reload();
+            }
     
   } else {
     setTimeout(function(){
-    alert("Congrats! You finished the game!!!");
-    alert("Now I mean I should probably give you a prize or something for winning");
-    alert("I'm being serious, I have no idea what to do");
-    alert("You know what, what do you want your prize to be. I'll shoot you an email if you also add that too");
-    alert("I'll load up your email thing but in case you haven't noticed, I love getting emails");
-      alert("Oh and I got the facts from You Wouldn't Want To Be A Ninja Warrior, by John Malam");
+      alert("Congrats m8, you beat the game!");
+      alert("You've earned the next challenge!");
     }, 5000);
-    window.location.href="href=mailto:gamedevbuisness@gmail.com";
+    window.location.href="href=vulnerablesite.freecluster.eu/BooogityBoogityBoooo.html";
     
   }
   }, 20);
@@ -619,6 +611,10 @@ ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
      alert("Fun fact: Did you know ninjas were based in Japan?");
      alert("AHH, CRAZOS!!! They're blind so invisibilty doesn't work. They run around until they touch you, then they kill you!");
      crazo(crazo1X, crazo1Y);
+     crazo(crazo2X, crazo2Y);
+     crazo(crazo3X, crazo3Y);
+     crazo(crazo4X, crazo4Y);
+     crazo(crazo5X, crazo5Y);
      speech.innerHTML = "";
    } else if(scene === 4){
      crazoHealth = 0;
@@ -706,6 +702,11 @@ ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
    } else if(scene === 3){
           alert("AHH, CRAZOS!!! They're blind so invisibilty doesn't work. They run around until they touch you, then they kill you!");
      crazo(crazo1X, crazo1Y);
+     crazo(crazo2X, crazo2Y);
+     crazo(crazo3X, crazo3Y);
+     crazo(crazo4X, crazo4Y);
+     crazo(crazo5X, crazo5Y);
+     
    }
   }
 
